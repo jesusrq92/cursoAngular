@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/icon.png" type="image/png">
-    <title>Maquetado</title>
+    <title>Angular</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,12 +18,50 @@
   </head>
 
   <body>
-    <h1>A empezar!</h1>
+    <!-- ******************************
+         Directivas
+    ng-app        ="nombre_modulo"
+    ng-controller ="nombre__controlador"
+    ng-model      ="nombre__scope"
+    ******************************** -->
 
+    <!-- ejemplo 1 -->
+    <h1>Ejemplo 1</h1>
     <div ng-controller="index">{{message}}</div>
+    <h4 ng-controller="index">Mi nombre es: {{messageNombre}}</h4>
 
-    
-    
+    <span class="space_example"></span>
+
+    <!-- ejemplo 2 -->
+    <h1>Ejemplo 2</h1>
+    <div ng-controller="index">
+        <div>
+            Escribe tu nombre: <input type="text" ng-model="yourname"/>
+        </div>
+        <div>
+            Favorite word: <input type="text" ng-model="favoriteWord"/>
+            - [{{favoriteWord}}]
+        </div>
+        <div>
+            Favorite color:
+            <input type="radio" name="fc" value="Red" ng-model="favoriteColor"> Red</input>
+            <input type="radio" name="fc" value="Green" ng-model="favoriteColor"> Green</input>
+            <input type="radio" name="fc" value="Yellow" ng-model="favoriteColor"> Yellow</input>
+            <input type="radio" name="fc" value="Blue" ng-model="favoriteColor"> Blue</input>
+            - [{{favoriteColor}}]
+        </div>
+        <div>
+            Favorite shape:
+            <select ng-model="favoriteShape">
+                <option value="Circle">Circle</option>
+                <option value="Triangle">Triangle</option>
+                <option value="Square">Square</option>
+            </select>
+            - [{{favoriteShape}}]
+        </div>
+        <p>Muchas gracias por llenar la informacion<em>{{yourname}}</em></p>
+    </div>
+
 
 
 

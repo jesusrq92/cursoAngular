@@ -1,0 +1,29 @@
+/********** */
+/*SASS */
+/********** */
+/********** */
+/*Variables */
+/********** */
+/********** */
+/*Mixins*** */
+/********** */
+/************* */
+/*Placeholders */
+/************* */
+/********** */
+/*Content** */
+/********** */
+* {
+  padding: 0;
+  margin: 1em; }
+
+.space_example {
+  margin-top: 3em; }
+
+h1 {
+  color: #284498; }
+
+p {
+  color: #dc1f1f; }
+
+/*# sourceMappingURL=estilos.css.map */
