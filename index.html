@@ -18,22 +18,41 @@
   </head>
 
   <body>
+
     <!-- ******************************
-         Directivas
-    ng-app        ="nombre_modulo"
-    ng-controller ="nombre__controlador"
-    ng-model      ="nombre__scope"
+         Directivas en los HTML
+    ng-app        ="nombre_modulo"         Define una api Angularjs
+    ng-controller ="nombre__controlador"   Indica en que parte tarbajara el controll
+    ng-model      ="nombre__scope"         Obtiene el valor de una entrada, para mostrarlo
+    ng-class      ="{clase:nombre_scope}"  Asocia clases con valores de entrada
+    ng-repeat     ="element in collection" Repite elementos de una coleccion
+    ng-show       ="nombre_scope"          Muestra visibilidad del elemento
     ******************************** -->
+    
+    <!-- ******************************
+        Además de esto, angular expone varias variables que le permiten 
+        obtener información sobre el elemento que se está reiterado sucesivamente.
+    $index  - El índice del elemento actual
+    $first  - Booleano que indica si el elemento es primero de la colección
+    $middle - Booleano que indica si el elemento no es ni la primera ni la última vez en la colección
+    $last   - Booleano que indica si el elemento es la última en la colección
+    $even   - Booleano que indica si el índice del elemento es par    
+    $odd    - Booleano que indica si el índice del elemento es impar
+    ********************************-->
+
 
     <!-- ejemplo 1 -->
     <h1>Ejemplo 1</h1>
+    <h3>(Utilizando ng-app y ng-controller)</h3>
     <div ng-controller="index">{{message}}</div>
     <h4 ng-controller="index">Mi nombre es: {{messageNombre}}</h4>
+    <h4 ng-controller="index">Mi primera expresion: {{5+5}}</h4>
 
     <span class="space_example"></span>
 
     <!-- ejemplo 2 -->
     <h1>Ejemplo 2</h1>
+    <h3>(Utilizando ng-model)</h3>
     <div ng-controller="index">
         <div>
             Escribe tu nombre: <input type="text" ng-model="yourname"/>
@@ -62,6 +81,60 @@
         <p>Muchas gracias por llenar la informacion<em>{{yourname}}</em></p>
     </div>
 
+    <!-- ejemplo 3 -->
+    <h1>Ejemplo 3</h1>
+    <h3>(Utilizando ng-class)</h3>
+    <div ng-controller="index">
+      Escriba rojo, verde o azul:
+      <input type="text" ng-model="value" />
+      <span ng-class="{red: isRed(), green: isGreen(), blue: isBlue()}">
+          Example Text
+      </span>
+    </div>
+
+    
+    <!-- ejemplo 4 -->
+    <h1>Ejemplo 4</h1>
+    <h3>(Utilizando ng-repeat)</h3>
+    <h4>Versión 1</h4>
+    <div ng-controller="index">
+      <table>
+          <thead>
+              <tr>
+                  <td>Id</td>
+                  <td>Name</td>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="product in products"
+                  ng-class="{oddRow: $odd}">
+                  <td>{{product.id}}</td>
+                  <td>{{product.name}}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+    <h4>Versión 2</h4>
+    <div ng-controller="index">
+        <h5 ng-repeat="x in records">{{x}}</h5>
+    </div>
+
+
+    <!-- ejemplo 5 -->
+    <h1>Ejemplo 5</h1>
+    <h3>(Utilizando ng-show)</h3>
+    <div ng-controller="index">
+        <div><input type="checkbox" ng-model="isFirstElementVisible" /> Primer elemento encendido</div>
+        <div><input type="checkbox" ng-model="isSecondElementVisible" /> Segundo elemento encendido</div>
+        <div ng-show="isFirstElementVisible">Soy el 1</div>
+        <div ng-show="isSecondElementVisible">Soy el 2</div>
+    </div>
+
+
+    <!-- ejemplo 6 -->
+    <h1>Ejemplo 6</h1>
+    <h3>(Utilizando ng-xxxxx)</h3>
 
 
 
@@ -70,6 +143,27 @@
 
 
 
+  
+    <!-- ejemplo SCRIPT -->
+    <h1>Ejemplo con script</h1>
+    <h3>(Utilizando un script de ejemplo)</h3>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        First Name: <input type="text" ng-model="firstName"><br>
+        Last Name: <input type="text" ng-model="lastName"><br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.firstName= "John";
+            $scope.lastName= "Doe";
+        });
+    </script>
 
 
 
