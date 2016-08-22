@@ -124,6 +124,7 @@
     <!-- ejemplo 5 -->
     <h1>Ejemplo 5</h1>
     <h3>(Utilizando ng-show)</h3>
+
     <div ng-controller="index">
         <div><input type="checkbox" ng-model="isFirstElementVisible" /> Primer elemento encendido</div>
         <div><input type="checkbox" ng-model="isSecondElementVisible" /> Segundo elemento encendido</div>
@@ -134,10 +135,27 @@
 
     <!-- ejemplo 6 -->
     <h1>Ejemplo 6</h1>
-    <h3>(Utilizando ng-xxxxx)</h3>
+    <h3>(Utilizando servicios recetas)</h3>
+
+    <h4>-Valor (Inyectando variables)</h4>
+        <div ng-controller="index">
+            {{scopeMsgService}}
+        </div>
 
 
+    <h4>-Fábrica (Inyectando funciones)</h4>
+        <div ng-controller="index">
+            {{product}}
+        </div>
 
+
+    <h4>-Servicio (Inyectando funciones sintaxis más limpia q Fábrica)</h4>
+        <div ng-controller="index">
+                {{productServ}}
+        </div>
+
+
+    
 
 
 
@@ -178,5 +196,6 @@
     <script src="js/operaciones.js"></script>
     <!-- modules -->
     <script src="js/modules/root.js"></script>
+    <script src="js/modules/services.js"></script>
   </body>
 </html>
