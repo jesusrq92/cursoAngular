@@ -15,6 +15,8 @@
     <link href="css/estilos.css" rel="stylesheet">
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- Angular-Resource -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min.js"></script>
   </head>
 
   <body>
@@ -103,6 +105,7 @@
               <tr>
                   <td>Id</td>
                   <td>Name</td>
+                  <td>Price</td>
               </tr>
           </thead>
           <tbody>
@@ -110,6 +113,8 @@
                   ng-class="{oddRow: $odd}">
                   <td>{{product.id}}</td>
                   <td>{{product.name}}</td>
+                  <td>{{product.price | currency}}</td> 
+                  <!-- CURRENCY es filtro para convertir a moneda $XY.00 -->
               </tr>
           </tbody>
       </table>
@@ -133,7 +138,7 @@
     </div>
 
 
-    <!-- ejemplo 6 -->
+    <!-- ejemplo 6 RECETAS SERVICIOS-->
     <h1>Ejemplo 6</h1>
     <h3>(Utilizando servicios recetas)</h3>
 
@@ -155,12 +160,31 @@
         </div>
 
 
+    <h4>-Proveedor (Provee servicios)</h4>
+    <div ng-controller="index">{{provedorMensaje}}</div>
+
+
+    <h4>-Constante (Inyectando variable en servicios)</h4>
+    <div ng-controller="index">{{ConstantMensaje}}</div>
+
+
+    <!-- ejemplo 7 -->
+    <h1>Ejemplo 7</h1>
+    <h3>(Utilizando $watch)</h3>
+    <div ng-controller="index">
+        <input type="text" ng-model="factor" /> {{product}}
+    </div>
+
+
+    <!-- ejemplo 8 -->
+    <h1>Ejemplo 8</h1>
+    <h3>(Utilizando Filters)</h3>
+    <div ng-controller="index">
+        <p>Value: <input type="text" ng-model="value" /></p>
+        <p>{{value | round:2 | dollars}}</p> 
+        <!-- el orden es primero redondea y luego $ -->
+    </div>
     
-
-
-
-
-
   
     <!-- ejemplo SCRIPT -->
     <h1>Ejemplo con script</h1>
@@ -196,6 +220,21 @@
     <script src="js/operaciones.js"></script>
     <!-- modules -->
     <script src="js/modules/root.js"></script>
-    <script src="js/modules/services.js"></script>
+    <script src="js/modules/filters.js"></script>
+
+    <!-- <script src="js/modules/reValor.js"></script>
+    <script src="js/modules/serviciosValor.js"></script>
+
+    <script src="js/modules/reFabrica.js"></script>
+    <script src="js/modules/serviciosFabrica.js"></script>
+
+    <script src="js/modules/reServicio.js"></script>
+    <script src="js/modules/serviciosServicio.js"></script>
+    
+    <script src="js/modules/reProveedor.js"></script>
+    <script src="js/modules/serviciosProveedor.js"></script>
+
+    <script src="js/modules/reConstante.js"></script>
+    <script src="js/modules/serviciosConstante.js"></script> -->
   </body>
 </html>

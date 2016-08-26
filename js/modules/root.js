@@ -2,7 +2,7 @@
 //Utilizare el mismo modulo y controlador para todos los ejemplos//
 /*****************************************************************/
 
-angular.module('root', [])
+angular.module('root', ["filters"])
     .controller("index", ["$scope", function ($scope) {
     	// ejemplo 1
         $scope.message = "Hola a todos desde angular";
@@ -24,10 +24,10 @@ angular.module('root', [])
 
 		//ejemplo 4
 		$scope.products = [
-			{id: 1, name: "Hockey puck"},
-			{id: 2, name: "Golf club"},
-			{id: 3, name: "Baseball bat"},
-			{id: 4, name: "Lacrosse stick"}
+			{id: 1, name: "Hockey puck", price: 14},
+			{id: 2, name: "Golf club", price: 19},
+			{id: 3, name: "Baseball bat", price: 8},
+			{id: 4, name: "Lacrosse stick", price: 10}
 		];
 
 		$scope.records = [
@@ -41,33 +41,30 @@ angular.module('root', [])
       	$scope.isFirstElementVisible = true;
 		$scope.isSecondElementVisible = true;
 
+        //ejemplo 6 (SERVICES)
+
+
+        //ejemplo 7 
+        //$watch nos proporciona una manera de mantener los valores calculados hasta la fecha cuando los valores que dependen de cambio.
+        $scope.factor = 6;
+        $scope.$watch("factor", function (factor) {
+            $scope.product = factor * 2;
+        });
+
+        //ejemplo 8 (SOLO SE INYECTA FILTROS EN EL MÓDULO) YA ESTÁ EN EL ROOT 
+        /*
+        angular.module("root", ["filters"])
+            .controller("index", [function() {}]);
+        */
+
+
     }]);
 
-		//ejemplo 6 CONTIENE VARIAS RECETAS
 
-// La receta VALOR
-angular.module("root", ["services"])  //crear modulo root e INYECTAR modulo servicios
-	.controller("index", ["$scope", "msgService", //nombre controlador y dependencias con las que va a jugar la funcion ("instancias de modulos", servicio y root) 
-		function($scope, msgService) {            //funcion con las dependencias a jugar
-			$scope.scopeMsgService = msgService;  //scope.nombre_de_scope = instancia_de_servicios para este ejemplo....
-		}
-	]);	
 
-// La receta de la Fábrica
-angular.module("root", ["services"])
-    .controller("index", ["$scope", "square", //nombre controlador y dependencias con las que va a jugar la funcion ("instancias de modulos", servicio y root) 
-        function ($scope, square) {		//funcion con las dependencias a jugar
-            $scope.product = square;   //guarda en el scope product un el valor de la funcion square 36
-        }
-    ]);
 
-// La receta Servicio
-angular.module("root", ["services"])
-    .controller("index", ["$scope", "multiplier",
-        function ($scope, multiplier) {
-            $scope.productServ = multiplier.multiply(2);
-        }
-    ]);
+
+
 
 
 
