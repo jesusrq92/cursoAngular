@@ -23,12 +23,14 @@
 
     <!-- ******************************
          Directivas en los HTML
-    ng-app        ="nombre_modulo"         Define una api Angularjs
-    ng-controller ="nombre__controlador"   Indica en que parte tarbajara el controll
-    ng-model      ="nombre__scope"         Obtiene el valor de una entrada, para mostrarlo
-    ng-class      ="{clase:nombre_scope}"  Asocia clases con valores de entrada
-    ng-repeat     ="element in collection" Repite elementos de una coleccion
-    ng-show       ="nombre_scope"          Muestra visibilidad del elemento
+    ng-app        ="nombre_modulo"              Define una api Angularjs
+    ng-controller ="nombre__controlador"        Indica en que parte tarbajara el controll
+    ng-model      ="nombre__scope"              Obtiene el valor de una entrada, para mostrarlo
+    ng-class      ="{clase:nombre_scope}"       Asocia clases con valores de entrada
+    ng-repeat     ="element in collection"      Repite elementos de una coleccion
+    ng-src        ="ruta_scope" product.cover   Muestra la img del scope
+    ng-click      ="funcion($index)"            Abre una funcion al hacer click
+    ng-show       ="nombre_scope"               Muestra visibilidad del elemento
     ******************************** -->
     
     <!-- ******************************
@@ -106,15 +108,22 @@
                   <td>Id</td>
                   <td>Name</td>
                   <td>Price</td>
+                  <td>Fecha</td>
+                  <td>Imagen</td>
+                  <td>Likes</td>
               </tr>
           </thead>
           <tbody>
               <tr ng-repeat="product in products"
                   ng-class="{oddRow: $odd}">
                   <td>{{product.id}}</td>
-                  <td>{{product.name}}</td>
+                  <td>{{product.name | uppercase}}</td>
                   <td>{{product.price | currency}}</td> 
+                  <td>{{product.pubdate | date}}</td>
+                  <td><img ng-src="{{ product.cover }}"></td>
+                  <td><p style="cursor:pointer;" ng-click="plusOne($index)">+{{product.likes}}</p></td>
                   <!-- CURRENCY es filtro para convertir a moneda $XY.00 -->
+                  <!-- DATE es filtro para convertir a fecha  -->
               </tr>
           </tbody>
       </table>
